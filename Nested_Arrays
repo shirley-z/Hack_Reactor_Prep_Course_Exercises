@@ -1,0 +1,16 @@
+// Alphabetize the colors in the nested arrays.
+
+var colors = [
+  ['red'], 
+  'orange', 
+  ['yellow', ['green', ['blue']]], 
+  ['indigo', 'violet']
+  ];
+
+console.log("blue:", colors[2][1][1][0]);
+console.log("green:", colors[2][1][0]);
+console.log("indigo:", colors[3][0]);
+console.log("orange:", colors[1]);
+console.log("red:", colors[0][0]);
+console.log("violet:", colors[3][1]);
+console.log("yellow:", colors[2][0]);
