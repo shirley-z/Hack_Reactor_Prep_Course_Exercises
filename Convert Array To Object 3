@@ -1,0 +1,40 @@
+/*
+Convert Array To Object 3
+Submitted on Today at 11:58 AM
+Write a function called "transformEmployeeData" that transforms some employee data from one format to another.
+
+The argument will look like this:
+
+var input = [
+    [
+        ['firstName', 'Joe'], ['lastName', 'Blow'], ['age', 42], ['role', 'clerk']
+    ],
+    [
+        ['firstName', 'Mary'], ['lastName', 'Jenkins'], ['age', 36], ['role', 'manager']
+    ]
+];
+Given that input, the return value should look like this:
+
+[
+    {firstName: 'Joe', lastName: 'Blow', age: 42, role: 'clerk'},
+    {firstName: 'Mary', lastName: 'Jenkins', age: 36, role: 'manager'}
+]
+*/
+
+
+
+function transformEmployeeData(employeeData) {
+  let result = [];
+  
+  for (var i = 0; i < employeeData.length; i++) {
+      let tempObj = {};
+      
+      for (var j = 0; j < employeeData[i].length; j++) {
+          tempObj[employeeData[i][j][0]] = employeeData[i][j][1];
+      }
+      
+      result.push(tempObj);
+  }
+  
+  return result;
+}
