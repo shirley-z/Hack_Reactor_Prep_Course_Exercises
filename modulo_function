@@ -1,0 +1,23 @@
+function modulo(num1, num2) {
+  if (num1 === 0) return 0;
+  if (num2 === 0 ) return NaN;
+  if (isNaN(num1) || isNaN(num2)) return NaN;
+  
+  let isNeg = false;
+  if (num1 < 0) {
+      isNeg = true;
+  }
+  
+  num1 = Math.abs(num1);
+  num2 = Math.abs(num2);
+  
+  while (num1 >= num2) {
+   num1 = num1 - num2;
+  }
+  
+  if (isNeg) {
+      return (-1 * num1);
+  } else {
+      return num1;
+  }
+}
