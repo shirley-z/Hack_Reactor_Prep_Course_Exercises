@@ -1,0 +1,66 @@
+//  Assert Arrays Equal - Solution 2
+function assertArraysEqual(actual, expected, testName) {
+  let pass = false;
+  
+  if (actual.length === expected.length) {
+    for (var i = 0; i < expected.length; i++) {
+      if (actual[i] === expected[i]) {
+        pass = true;
+      } else {
+        pass = false;
+        break;
+      }
+    }
+  }
+  
+  if (pass) {
+      return console.log('passed');
+  } else {
+      console.log(`FAILED [${testName}] Expected "${expected}", but got "${actual}"`);
+  }
+}
+
+
+//  Assert Arrays Equal - Solution 1
+function assertArraysEqual(actual, expected, testName) {
+  let failed = false;
+  
+  for (var i = 0; i < expected.length; i++) {
+      if (actual[i] !== expected[i]) {
+        failed = true;
+      }
+  }
+  
+  if (actual.length !== expected.length || failed) {
+      console.log(`FAILED [${testName}] Expected "${expected}", but got "${actual}"`);
+  } else {
+      console.log('passed');
+  }
+}
+
+//  Assert Arrays Equal - Solution 3
+function assertArraysEqual(actual, expected, testName) {
+  const failResult = `FAILED [${testName}] Expected "${expected}", but got "${actual}"`;
+  if (actual.length !== expected.length){ return console.log(failResult)}
+  
+  for (var i = 0; i < expected.length; i++) {
+      if (actual[i] !== expected[i]) {
+        return console.log(failResult);
+      }
+  }
+  console.log("passed")
+}
+
+
+//  Assert Objects Equal
+function assertObjectsEqual(actual, expected, testName) {
+  let failedMsg = `FAILED [${testName}] Expected ${JSON.stringify(expected)}, but got ${JSON.stringify(actual)}`;
+  
+  if (JSON.stringify(actual) === JSON.stringify(expected)) {
+      console.log("passed");
+  } else {
+      console.log(failedMsg);
+  }
+}
+
+
