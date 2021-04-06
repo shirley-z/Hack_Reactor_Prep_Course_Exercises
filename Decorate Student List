@@ -44,39 +44,38 @@ function getRandomIntInclusive(min, max) {
 function decorateClassListWithAges(classList) {
   // creates an object for each string in the input array, with an age of 10 or 11
   // returns an array of these objects
-  let classArray = [];
+  let classListWithAges = [];
   
   for (var i = 0; i < classList.length; i++) {
-      classArray.push({
-          name: classList[i],
-          age: getRandomIntInclusive(10, 11)
-      });
+      let studentObj = {};
+      studentObj.name = classList[i];
+      studentObj.age = getRandomIntInclusive(10, 11);
+      classListWithAges.push(studentObj);
   }
-  return classArray;
+  
+  return classListWithAges;
 }
 
 // ASSERTION FUNCTION(S) TO BE USED
-function assert(actual, expectedLow, expectedHigh, testName) {
-    function failedMsg(i) {
-    return `FAILED [${testName}], expected age between "${expectedLow}" to "${expectedHigh}" but got "${actual[i].age}"`;
-    }  
-
-    for (var i = 0; i < actual.length; i++) {
-      if (actual[i].age >= expectedLow && actual[i].age <= expectedHigh) {
-        console.log("passed");
-      } else {
-        console.log(failedMsg(i));
-      }
+function assertRangeAndNames(actual, expected, low, high, testName) {
+  if (actual.length !== expected.length) {
+    return console.log('FAILED - number of students are not equal');
+  }
+  for (var i = 0; i < expected.length; i++) {
+    if (actual[i].name !== expected[i].name) {
+      return console.log(`FAILED - actual name "${actual[i].name}" is not equal to expected name "${expected[i].name}"`);
     }
+    if (!(actual[i].age >= low && actual[i].age <= high)) {
+      return console.log(`FAILED - age "${actual[i].age}" is not between "${low}" and "${high}"`);
+    }
+  }
+  console.log("passed");
 }
 
 // TESTS CASES
-// ages are between 10 and 11
-let classList = ["Joe", "Jack", "John", "Fred", "Frank", "Barry", "Larry", "Mary",
-"Harry", "Farrell", "Susan", "Monica", "Keira", "Caroline", "Harriet", "Erica",
-"Luann", "Cheryl", "Beth", "Rupa", "Linda", "Allison", "Nancy", "Dora"];
-let actual = decorateClassListWithAges(classList);
-let expectedLow = 10;
-let expectedHigh = 11;
-let testName = 'ages should be between 10 and 11';
-assert(actual, expectedLow, expectedHigh, testName);
+let classList1 = ["Joe", "Jack", "John"];
+let actual1 = decorateClassListWithAges(classList1);
+let expected1 = [{"name":"Joe","age":11},{"name":"Jack","age":10},
+{"name":"John","age":11}];
+
+assertRangeAndNames(actual1, expected1, 10, 11, 'ages should be between 10 and 11');
