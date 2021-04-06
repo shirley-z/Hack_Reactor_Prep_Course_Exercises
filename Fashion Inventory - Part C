@@ -1,0 +1,101 @@
+/*
+You have a fashion catalog, an inventory of items from various high-fashion designers. Each designer has a lineup of shoes. Each shoe has a name and a price.
+
+It looks like this:
+
+var currentInventory = [
+  {
+    name: 'Brunello Cucinelli',
+    shoes: [
+      {name: 'tasselled black low-top lace-up', price: 1000},
+      {name: 'tasselled green low-top lace-up', price: 1100},
+      {name: 'plain beige suede moccasin', price: 950},
+      {name: 'plain olive suede moccasin', price: 1050}
+    ]
+  },
+  {
+    name: 'Gucci',
+    shoes: [
+      {name: 'red leather laced sneakers', price: 800},
+      {name: 'black leather laced sneakers', price: 900}
+    ]
+  }
+];
+
+Your task is to find all of the shoes with "black" in the name. Your function should filter these shoes, and return them in a "flat list" similarly to Part A:
+
+//...console output:
+Brunello Cucinelli, tasselled black low-top lace-up, 1000
+Gucci, black leather laced sneakers, 900
+Here is an example of a flat list in code:
+
+var flatList = "First line\nSecond Line\nThird Line";
+console.log(flatList);
+Observe that a "flat list" refers to a string where each new line is separated by the newline symbol. Also note that the "flat list" does not end with a newline symbol. 
+*/
+
+
+
+function listAllBlackShoes(inventory) {
+  let flatList = '';
+
+  for (var i = 0; i < inventory.length; i++) {
+    for (var j = 0; j < inventory[i].shoes.length; j++) {
+      if (containsBlackKeyword(inventory[i].shoes[j])) {
+        let line = inventory[i].name + ', ' 
+        + inventory[i].shoes[j].name + ', ' 
+        + inventory[i].shoes[j].price;
+        if ( (i !== (inventory.length - 1)) && (j !== (inventory[i]  .shoes.length - 1)) ) {
+          line += '\n';
+        }
+        flatList += line;
+      }
+    }
+  }
+  return flatList;
+}
+
+function containsBlackKeyword(shoeObj) {
+  let words = shoeObj.name.split(' ');
+  for (var i = 0; i < words.length; i++) {
+    if (words[i] === 'black') {
+      return true;
+    }
+  }
+  return false;
+}
+
+//TESTS
+function assertEqual(actual, expected, testName) {
+  if (JSON.stringify(actual) === JSON.stringify(expected)) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED [${testName}] Expected: \n\n${JSON.stringify(expected)} \n\nbut got:\n\n${JSON.stringify(actual)}`);
+  }
+}
+
+let currentInventory = [
+  {
+    name: 'Brunello Cucinelli',
+    shoes: [
+      {name: 'tasselled black low-top lace-up', price: 1000},
+      {name: 'tasselled green low-top lace-up', price: 1100},
+      {name: 'plain beige suede moccasin', price: 950},
+      {name: 'plain olive suede moccasin', price: 1050}
+    ]
+  },
+  {
+    name: 'Gucci',
+    shoes: [
+      {name: 'red leather laced sneakers', price: 800},
+      {name: 'black leather laced sneakers', price: 900}
+    ]
+  }
+];
+
+// console.log(listAllBlackShoes(currentInventory));
+
+let expectedOutput = `Brunello Cucinelli, tasselled black low-top lace-up, 1000
+Gucci, black leather laced sneakers, 900`;
+
+assertEqual(listAllBlackShoes(currentInventory), expectedOutput, 'should return only black shoes in the correct format');
