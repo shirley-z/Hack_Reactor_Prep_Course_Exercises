@@ -12,13 +12,12 @@ console.log(output); // --> hcce kuo toh wnietertsni ghtsip orlbmei ,si 't snias
 
 
 function flipPairs(string) {
-  let chars = string.split('');
   let newString = '';
-  for (var i = 0; i < chars.length; i += 2) {
-    if (chars[i+1] === undefined) {
-      newString += chars[i];
+  for (var i = 0; i < string.length; i += 2) {
+    if (string[i+1] === undefined) {
+      newString += string[i];
     } else {
-      newString += chars[i+1] + chars[i];
+      newString += string[i+1] + string[i];
     }
   }
   return newString;
