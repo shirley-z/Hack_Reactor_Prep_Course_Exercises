@@ -1,0 +1,40 @@
+/*
+Flip every pair of characters in a string.
+
+
+Example:
+var input = 'check out how interesting this problem is, it\'s insanely interesting!';
+var output = flipPairs(input);
+console.log(output); // --> hcce kuo toh wnietertsni ghtsip orlbmei ,si 't sniasenyli tnreseitgn!
+*/
+
+
+
+
+function flipPairs(string) {
+  let chars = string.split('');
+  let newString = '';
+  for (var i = 0; i < chars.length; i += 2) {
+    if (chars[i+1] === undefined) {
+      newString += chars[i];
+    } else {
+      newString += chars[i+1] + chars[i];
+    }
+  }
+  return newString;
+}
+
+var input = 'check out how interesting this problem is, it\'s insanely interesting!';
+
+var output = flipPairs(input);
+expectedOutput = `hcce kuo toh wnietertsni ghtsip orlbmei ,si 't sniasenyli tnreseitgn!`;
+
+function assertEqual(actual, expected, testName) {
+  if (actual === expected) {
+    console.log('passed');
+  } else {
+    console.log(`FAILED [${testName}] Expected "${expected}" but got "${actual}"`);
+  }
+}
+
+assertEqual(output, expectedOutput, 'strings should equal');
