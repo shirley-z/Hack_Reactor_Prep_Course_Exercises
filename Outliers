@@ -1,0 +1,55 @@
+/*
+Given a string of even and odd numbers, find which is the sole even number or the sole odd number.
+
+The return value should be 1-indexed, not 0-indexed.
+
+Examples :
+detectOutlierValue("2 4 7 8 10"); // => 3 - Third number is odd, while the rest of the numbers are even
+detectOutlierValue("1 10 1 1");  //=> 2 - Second number is even, while the rest of the numbers are odd
+*/
+
+function detectOutlierValue(stringOfNumbers) {
+  let arrayOfNumbers = stringOfNumbers.split(' ');
+  let evens = [];
+  let odds = [];
+
+  for (var i = 0; i < arrayOfNumbers.length; i++) {
+    if (arrayOfNumbers[i] % 2 === 0) {
+      evens.push(arrayOfNumbers[i]);
+    } else {
+      odds.push(arrayOfNumbers[i]);
+    }
+  }
+ 
+  let outlierIs = (odds.length === 1) ? 'odd' : 'even';
+  let theRest = (outlierIs === 'even') ? 'odd' : 'even';
+  let index = null;
+  
+  if (outlierIs === 'even') {
+    index = arrayOfNumbers.indexOf(evens[0]) + 1;
+    return `=> ${index} - ${toWord(index)} number is ${outlierIs}, while the rest of the numbers are ${theRest}`;
+  } else {
+    index = arrayOfNumbers.indexOf(odds[0]) + 1;
+    return `=> ${index} - ${toWord(index)} number is ${outlierIs}, while the rest of the numbers are ${theRest}`;
+  }
+}
+
+function toWord(index) {
+  let words = {
+    1: 'First',
+    2: 'Second',
+    3: 'Third',
+    4: 'Fourth',
+    5: 'Fifth',
+    6: 'Sixth',
+    7: 'Seventh',
+    8: 'Eighth',
+    9: 'Ninth',
+    10: 'Tenth'
+  };
+  return words[index];
+}
+
+console.log(detectOutlierValue("2 4 7 8 10")); // => 3 - Third number is odd, while the rest of the numbers are even
+
+console.log(detectOutlierValue("1 10 1 1"));  //=> 2 - Second number is even, while the rest of the numbers are odd
