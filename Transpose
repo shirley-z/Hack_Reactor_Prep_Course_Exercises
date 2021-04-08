@@ -1,0 +1,57 @@
+/*
+You will be given an array that contains two strings. Your job is to create a function that will take those two strings and transpose them, so that the strings go from top to bottom instead of left to right.
+
+e.g. transposeTwoStrings(['Hello','World']);
+
+should return:
+H W  
+e o  
+l r  
+l l  
+o d
+*/
+
+function transposeTwoStrings(arrayOfTwoStrings) {
+  let arrayOfPairs = [];
+
+  let isFirstStringShorter = (arrayOfTwoStrings[0].length < arrayOfTwoStrings[1].length) ? true : false;
+  
+  let longerString = (isFirstStringShorter) ? arrayOfTwoStrings[1] : arrayOfTwoStrings[0];
+
+  let shorterString = (isFirstStringShorter) ? arrayOfTwoStrings[0] : arrayOfTwoStrings[1];
+
+  for (var i = 0; i < longerString.length; i++) {
+    let pair = [];
+    if (shorterString[i] !== undefined) {
+      pair = arrayOfTwoStrings[0][i] + ' ' + arrayOfTwoStrings[1][i];
+    } else if (isFirstStringShorter) {
+      pair = ' ' + ' ' + arrayOfTwoStrings[1][i];
+    } else {
+      pair = arrayOfTwoStrings[0][i] + ' ' + ' ';
+    }
+    arrayOfPairs.push(pair);
+  }
+  let formatted = arrayOfPairs.join('\n');
+  return formatted;
+}
+
+let expectedOutput = 
+`H W
+e o
+l r
+l l
+o d`;
+
+function assertEqual(actual, expected) {
+  if (actual === expected) {
+    console.log('passed');
+  } else {
+    console.log(`Actual \n${actual} \ndid not match expected \n${expected}`);
+  }
+}
+
+assertEqual(transposeTwoStrings(['Hello','World']), expectedOutput);
+
+console.log(transposeTwoStrings(['Hello','Worldliness']));
+
+console.log(transposeTwoStrings(['Howareya','World']));
