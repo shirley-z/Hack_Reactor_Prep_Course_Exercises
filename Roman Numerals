@@ -39,7 +39,7 @@ var romanToNum = function(roman) {
 
     if (specialTable[searchString] !== undefined) {
       console.log("searchString: ", searchString);
-      console.log("value at table: ", specialTable[searchString]);
+      console.log("value for search string: ", specialTable[searchString]);
 
       sum += specialTable[searchString];
       console.log("sum: ", sum);
