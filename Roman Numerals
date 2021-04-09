@@ -18,7 +18,7 @@ var romanToNum = function(roman) {
     'CM': 900,
     'CD': 400,
     'XC': 90,
-    'XL': 40,ta
+    'XL': 40,
     'IX': 9,
     'IV': 4
     }
@@ -55,8 +55,11 @@ var romanToNum = function(roman) {
 
   for (var i = 0; i < romanArray.length; i++) {
     sum += regularTable[romanArray[i]];
+    console.log("regular Roman numeral to be added: ", romanArray[i]);
+    console.log("value for regular: ", regularTable[romanArray[i]]);
+    console.log("sum for regular: ", sum, '\n=====');
   }
-  
+  console.log("total is: ");
   return sum;
 };
 
