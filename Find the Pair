@@ -1,0 +1,36 @@
+/*Given a list of non-negative integers and a target sum, find a pair of numbers that sums to the target sum.
+
+Example:
+
+var pair = findPairForSum([3, 34, 4, 12, 5, 2], 9);
+console.log(pair); // --> [4, 5]
+*/
+
+
+
+function findPairForSum(integerArray, targetSum) {
+  let pairArray = [];
+
+  for (var i = 0; i < integerArray.length; i++) {
+    for (var j = 0; j < integerArray.length; j++) {
+      if (targetSum === integerArray[i] + integerArray[j]) {
+        pairArray.push(integerArray[i], integerArray[j]);
+        break; 
+      }
+      if (pairArray.length === 2) {
+        break;
+      }
+    }
+  }
+  return pairArray;
+}
+
+function assertEquals(actual, expected) {
+    if (JSON.stringify(actual) === JSON.stringify(expected)) {
+      return console.log('passed');
+    } else {
+      return console.log(`FAILED Expected ${JSON.stringify(expected)} but got ${JSON.stringify(actual)}`);
+    }
+}
+
+assertEquals(findPairForSum([3, 34, 4, 12, 5, 2], 9), [4, 5]);
