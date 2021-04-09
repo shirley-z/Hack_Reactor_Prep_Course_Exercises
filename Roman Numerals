@@ -18,7 +18,7 @@ var romanToNum = function(roman) {
     'CM': 900,
     'CD': 400,
     'XC': 90,
-    'XL': 40,
+    'XL': 40,ta
     'IX': 9,
     'IV': 4
     }
@@ -39,7 +39,7 @@ var romanToNum = function(roman) {
 
     if (specialTable[searchString] !== undefined) {
       console.log("searchString: ", searchString);
-      console.log("value at: ", specialTable[searchString]);
+      console.log("value at table: ", specialTable[searchString]);
 
       sum += specialTable[searchString];
       console.log("sum: ", sum);
