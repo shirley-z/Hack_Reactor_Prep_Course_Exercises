@@ -14,7 +14,7 @@ var romanToNum = function(roman) {
   let romanArray = roman.split('');
   console.log("romanArray: ", romanArray, '\n==========');
   
-  let specialTable = {
+  let subtractionNotionTable = {
     'CM': 900,
     'CD': 400,
     'XC': 90,
@@ -37,11 +37,11 @@ var romanToNum = function(roman) {
     let previousIndex = i - 1;
     let searchString = '' + romanArray[previousIndex] + romanArray[i];
 
-    if (specialTable[searchString] !== undefined) {
+    if (subtractionNotionTable[searchString] !== undefined) {
       console.log("searchString: ", searchString);
-      console.log("value for search string: ", specialTable[searchString]);
+      console.log("value for search string: ", subtractionNotionTable[searchString]);
 
-      sum += specialTable[searchString];
+      sum += subtractionNotionTable[searchString];
       console.log("sum: ", sum);
     
       romanArray.splice(romanArray.indexOf(romanArray[previousIndex]), 2);
