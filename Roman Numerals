@@ -67,3 +67,45 @@ var romanToNum = function(roman) {
 console.log(romanToNum('MCMXCIX')); //1999
 // console.log(romanToNum('IV')); //4
 // console.log(romanToNum('XXXIII')); //33
+
+
+
+
+/*
+In my function I have two tables. 
+The regular table holds the values for regular roman numerals. 
+The special table holds the subtractive notations such as IX = 9.
+
+The input is a string type, but since string type is immutable and I want to make modifications to it later, I will need to make an array copy of the characters in the string.
+
+Loop over the romanArray. 
+I create a search string that combines the character at i and the character before it. Because I’m looking for i - 1, if the loop starts at i = 0, then i - 1 will be undefined, so the loop has to start at i = 1.
+
+If the search string exists in the special table, then I want to add that value to the sum.
+
+Then I want to remove the two characters from the romanArray so that I don’t repeat adding them later.
+
+I then need to subtract 2 from i because I spliced away two characters, and I don’t want the loop to skip over those spots.
+
+When it is done adding the special values, then go into another loop to add the regular values.
+
+Finally, return the sum.
+
+==========
+
+In my function I have two tables. 
+The regular table holds the values for regular roman numerals. 
+The special table holds the subtractive notations such as IX = 9.
+
+The input is a string, but I need to make modifications later, and since strings are immutable,  I made an array copy of the input, split into each character.
+
+Then loop through the array, at each iteration, combine two characters and see if they exist in the subtraction notion table. If there is a value in the table for the two characters, then add that value to the sum.
+
+After that, remove the two characters whose values are already accounted for.
+
+Continue looping and finding all the subtraction notions, and summing them up.
+
+After that’s done, go into another loop and sum up all the regular Roman numeral values.
+
+Finally, return the sum.
+*/
