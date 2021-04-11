@@ -1,0 +1,48 @@
+function calculateAveragePricePerDesigner(inventory) {
+  let avgPrice = {
+    'designers': []
+  };
+  
+  for (var i = 0; i < inventory.length; i++) {
+    let designerObj = inventory[i];
+    let priceObj = {
+      name: designerObj.name,
+      averagePrice: getAveragePrice(designerObj.shoes)
+    }
+    avgPrice.designers.push(priceObj);
+  }
+  return avgPrice;
+}
+
+function getAveragePrice(shoesArray) {
+  return getSum(shoesArray) / shoesArray.length;
+}
+
+function getSum(shoesArray) {
+  let sum = 0;
+  for (var i = 0; i < shoesArray.length; i++) {
+    sum += shoesArray[i].price;
+  }
+  return sum;
+}
+
+var currentInventory = [
+  {
+    name: 'Brunello Cucinelli',
+    shoes: [
+      {name: 'tasselled black low-top lace-up', price: 1000},
+      {name: 'tasselled green low-top lace-up', price: 1100},
+      {name: 'plain beige suede moccasin', price: 950},
+      {name: 'plain olive suede moccasin', price: 1050}
+    ]
+  },
+  {
+    name: 'Gucci',
+    shoes: [
+      {name: 'red leather laced sneakers', price: 800},
+      {name: 'black leather laced sneakers', price: 900}
+    ]
+  }
+];
+
+calculateAveragePricePerDesigner(currentInventory);
