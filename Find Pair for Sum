@@ -12,14 +12,14 @@ function findPairForSum(integerArray, targetSum) {
   let pairArray = [];
 
   for (var i = 0; i < integerArray.length; i++) {
-    for (var j = 0; j < integerArray.length; j++) {
+    for (var j = i + 1; j < integerArray.length; j++) {
       if (targetSum === integerArray[i] + integerArray[j]) {
         pairArray.push(integerArray[i], integerArray[j]);
         break; 
       }
-      if (pairArray.length === 2) {
-        break;
-      }
+      // if (pairArray.length === 2) {
+      //   break;
+      // }
     }
   }
   return pairArray;
