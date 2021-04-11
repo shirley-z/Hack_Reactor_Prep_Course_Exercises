@@ -1,0 +1,30 @@
+function search(array, value) {
+  let startingIndex = 0;
+  let endingIndex = array.length - 1;
+  let midpointIndex = Math.floor((endingIndex + startingIndex) / 2);
+
+
+  while (startingIndex <= endingIndex) {
+  console.log("startingIndex=", startingIndex);
+  console.log("endingIndex=", endingIndex);
+  console.log("midpointIndex=", midpointIndex, '\n=====');
+      if (value === array[midpointIndex]) {
+      return midpointIndex;
+      }
+
+      if (value < array[midpointIndex]) {
+          endingIndex = midpointIndex - 1;
+      }
+
+      if (value > array[midpointIndex]) {
+          startingIndex = midpointIndex + 1;
+      }
+
+      midpointIndex = Math.floor((endingIndex + startingIndex) / 2);
+  }
+  return null;
+}
+
+var arr = [1, 3, 16, 22, 31, 33, 34]
+var result = search(arr, 31);
+console.log(result); //--> 4
