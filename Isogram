@@ -1,0 +1,17 @@
+function isIsogram(text) {
+  // add each char to a set
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+  // note: a set drops dup values
+  // thus, to see if all the chars were unique,
+  // check length of text and the size of the set
+  if (text.length === 0) return true;
+  
+  let set = new Set(text.toUpperCase());
+//   if (text.length === set.size) {
+//       return true;
+//   } else {
+//       return false;
+//   }
+
+  return text.length === set.size;
+}
