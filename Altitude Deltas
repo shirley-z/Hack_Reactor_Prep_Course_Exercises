@@ -29,14 +29,12 @@ console.log(output_4); //--> 50
 function sumAltitudeDeltas(altitudes, start, end) {
     let sum = 0;
     
-    // get slice of array from start to end
+    // loop through array from start to end
     // for each difference, if second number is larger, double sum
     // if second number is smaller, add sum
     // sum is the absolute value of difference
-    
-    altitudes = altitudes.slice(start, end + 1);
-    
-    for(var i = 0; i < altitudes.length; i++) {
+
+    for(var i = start; i < end; i++) {
       let difference = altitudes[i+1] - altitudes[i];
       if (difference >= 0) {
         sum += (difference * 2);
