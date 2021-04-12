@@ -9,7 +9,7 @@ Here are some examples of your code running, assuming you have successfully crea
 */
 
 
-
+// Solution 1
 function checkWinner(row) {
   let redStreak = 0;
   let blackStreak = 0;
@@ -37,6 +37,21 @@ function checkWinner(row) {
     if (blackStreak === 4) {
       return 'Black Wins!';
     }
+  }
+  return 'Draw!'
+}
+
+
+// solution 2
+function checkWinner2(row) {
+
+  for (var i = 0; i < row.length - 3; i++) {
+    if (row[i] === 'red' && row[i+1] === 'red' && row[i+2] === 'red' && row[i+3] === 'red') {
+      return 'Red Wins!'
+    }
+    if (row[i] === 'black' && row[i+1] === 'black' && row[i+2] === 'black' && row[i+3] === 'black') {
+      return 'Black Wins!'
+    }    
   }
   return 'Draw!'
 }
