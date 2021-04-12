@@ -1,0 +1,56 @@
+function generateLaceDetails(inventory) {
+  let result = [];
+
+  for (var i = 0; i < inventory.length; i++) {
+    for (var j = 0; j < inventory[i].shoes.length; j++) {
+      let nameWords = inventory[i].shoes[j].name.split(' ');
+        if (hasLace(nameWords)) {
+        let shoe = {
+          nameWords: nameWords,
+          targetWordIndex: returnIndex(nameWords)
+        };
+        result.push(shoe);
+      }
+    }
+  }
+
+  return result;
+}
+
+function hasLace(nameWords) {
+  for (var i = 0; i < nameWords.length; i++) {
+    if (nameWords[i].indexOf('lace') > -1) {
+    return true;
+    }
+  }
+  return false;
+}
+
+function returnIndex(nameWords) {
+  for (var i = 0; i < nameWords.length; i++) {
+    if (nameWords[i].indexOf('lace') > -1) {
+    return i;
+    }
+  }
+}
+
+var currentInventory = [
+  {
+    name: 'Brunello Cucinelli',
+    shoes: [
+      {name: 'tasselled black low-top lace-up', price: 1000},
+      {name: 'tasselled green low-top lace-up', price: 1100},
+      {name: 'plain beige suede moccasin', price: 950},
+      {name: 'plain olive suede moccasin', price: 1050}
+    ]
+  },
+  {
+    name: 'Gucci',
+    shoes: [
+      {name: 'red leather laced sneakers', price: 800},
+      {name: 'black leather laced sneakers', price: 900}
+    ]
+  }
+];
+
+generateLaceDetails(currentInventory);
