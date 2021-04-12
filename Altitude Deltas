@@ -41,6 +41,8 @@ function sumAltitudeDeltas(altitudes, start, end) {
       }
       if (difference < 0) {
         sum += Math.abs(difference);
+        // sum -= difference;
+        // minus a negative number is adding it
       }
     }
     
