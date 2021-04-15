@@ -51,4 +51,4 @@ function titleCase(str) {
   return newStr;
 }
 
-titleCase('peter pIPER');
+titleCase('PetEr pIPeR');
