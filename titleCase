@@ -1,0 +1,54 @@
+// My approach
+function titleCase(str) {
+  str = str.toLowerCase();
+  
+  let words = str.split(' ');
+  let arrayOfChars = [];
+  
+  for (var i = 0; i < words.length; i++) {
+     let currentChars = words[i].split('');
+     arrayOfChars.push(currentChars);
+  }
+  
+  for (var j = 0; j < arrayOfChars.length; j++) {
+      arrayOfChars[j][0] = arrayOfChars[j][0].toUpperCase();
+      arrayOfChars[j] = arrayOfChars[j].join('');
+  }
+  
+  let newStr = arrayOfChars.join(' ');
+  return newStr;
+}
+
+// Tech Mentor Mario's solution
+function titleCase(str) {
+  let newStr = '';
+
+  for (var i = 0; i < str.length; i++) {
+    if (i === 0) {
+      newStr += str[i].toUpperCase();
+    } else if (str[i-1] == ' ') {
+      newStr += str[i].toUpperCase();
+    } else {
+      newStr += str[i].toLowerCase();
+    }
+  }
+  return newStr;
+}
+
+titleCase('peter pIPER');
+
+// Less lines version
+function titleCase(str) {
+  let newStr = '';
+
+  for (var i = 0; i < str.length; i++) {
+    if (i === 0 || str[i-1] == ' ') {
+      newStr += str[i].toUpperCase();
+    } else {
+      newStr += str[i].toLowerCase();
+    }
+  }
+  return newStr;
+}
+
+titleCase('peter pIPER');
