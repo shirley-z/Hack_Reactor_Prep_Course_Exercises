@@ -22,3 +22,26 @@ var rockPaperScissors = function(rounds) {
 };
 
 rockPaperScissors(3);
+
+
+/* True Recursion - Anthony's version */
+var rockPaperScissors = function(roundsToGo, choicesSoFar) {
+  var choices = ['rock', 'paper', 'scissors'];
+  var result = [];
+
+  if (roundsToGo === 0) {
+    result.push(choicesSoFar);
+    return result;
+  }
+
+  choices.forEach(function(choice) {
+    result = result.concat(rockPaperScissors(roundsToGo - 1, choicesSoFar.concat(choice)));
+  });
+  
+  return result;
+};
+
+rockPaperScissors(3, []);
+
+
+/* True Recursion - Hack Reactor Solution */
