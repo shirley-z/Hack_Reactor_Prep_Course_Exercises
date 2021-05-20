@@ -45,3 +45,20 @@ rockPaperScissors(3, []);
 
 
 /* True Recursion - Hack Reactor Solution */
+var rockPaperScissors = function (rounds, playSoFar) {
+  var plays = ['rock', 'paper', 'scissors'];
+  var results = [];
+  playSoFar = playSoFar || [];
+
+  if (playSoFar.length === rounds) {
+    results.push(playSoFar);
+  } else {
+    plays.forEach(function(play) {
+      results = results.concat(rockPaperScissors(rounds, playSoFar.concat(play)));
+    });
+  }
+  
+  return results;
+};
+
+rockPaperScissors(3);
