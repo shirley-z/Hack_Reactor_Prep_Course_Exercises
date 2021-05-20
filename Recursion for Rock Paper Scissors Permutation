@@ -1,0 +1,24 @@
+/* Inner Function Method */
+
+var rockPaperScissors = function(rounds) {
+  var choices = ['rock', 'paper', 'scissors'];
+  var results = [];
+
+  var innerFunction = function (roundsToGo, choicesSoFar) {
+    if (roundsToGo === 0) {
+      results.push(choicesSoFar);
+      return;
+    }
+
+    choices.forEach(function(choice) {
+      return innerFunction(roundsToGo - 1, choicesSoFar.concat(choice));
+    });
+
+  };
+
+  innerFunction(rounds, []);
+  
+  return results;
+};
+
+rockPaperScissors(3);
