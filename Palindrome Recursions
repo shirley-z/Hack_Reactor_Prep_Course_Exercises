@@ -1,0 +1,54 @@
+// Accepts a string and returns a reversed copy
+
+/* Recursion */
+function reverse(string) {
+    if (string.length === 1) {
+        return string;
+    }
+  return reverse(string.slice(1)) + string[0];  
+};
+
+
+/* Iteration */
+function reverseLoop(string) {
+    var reversed = '';
+    for (var i = string.length - 1; i >= 0; i--) {
+      reversed += string[i];
+    }
+    return reversed;
+}
+
+
+/* Performance Comparison */
+let t1 = performance.now();
+console.log(reverse('shirley'));
+let t2 = performance.now();
+
+let t3 = performance.now();
+console.log(reverseLoop('shirley'));
+let t4 = performance.now();
+
+console.log(`Time Elapsed: ${(t2-t1)/1000} seconds.`);
+console.log(`Time Elapsed: ${(t4-t3)/1000} seconds.`);
+
+
+
+// Write a function that determines if a string is a palindrome.
+var palindrome = function(string) {
+  string = string.toUpperCase();
+  if (string.length === 2) {
+    if (string[0] === string[1]) {
+      return true;
+    }
+    return false;
+  }
+  if (string.length === 1) {
+    return true;
+  }
+
+  if (string[0] === string[string.length - 1]) {
+    return palindrome(string.slice(1, string.length - 1));
+  } else {
+    return false;
+  }
+};
