@@ -1,0 +1,53 @@
+/* MAP */
+
+var input = [1, 2, 3, 4];
+var output = map(input, function(value) {
+  return value + 1;
+})
+
+console.log(output); // [2, 3, 4, 5]
+
+function map(array, callbackFunction) {
+  let newArray = [];
+  for (var i = 0; i < array.length; i++) {
+      newArray.push(callbackFunction(array[i]));
+  }
+  return newArray;
+}
+
+
+
+/* FILTER */
+var input = [1, 2, 3, 4];
+var output = filter(input, function(value) {
+  return value % 2 === 0;
+})
+
+console.log(output); // [2, 4]
+
+function filter(array, callbackFunction) {
+  let newArray = [];
+  for (var i = 0; i < array.length; i++) {
+      if (callbackFunction(array[i])) {
+          newArray.push(array[i]);
+      }
+  }
+  return newArray;
+}
+
+
+
+/* REDUCE */
+var input = [1, 2, 3, 4];
+var output = reduce(input, function(sum, value) {
+  return sum + value;
+}, 0)
+
+console.log(output); // 10
+
+var input = [1, 2, 3, 4];
+var output = reduce(input, function(sum, value) {
+  return sum + value;
+}, 0)
+
+console.log(output); // 10
